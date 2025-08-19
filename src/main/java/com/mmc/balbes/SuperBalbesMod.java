@@ -29,8 +29,8 @@ import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(BalbesMod.MOD_ID)
-public class BalbesMod
+@Mod(SuperBalbesMod.MOD_ID)
+public class SuperBalbesMod
 {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "balbes";
@@ -60,7 +60,7 @@ public class BalbesMod
                 output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
             }).build());
 
-    public BalbesMod(FMLJavaModLoadingContext context)
+    public SuperBalbesMod(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
 
