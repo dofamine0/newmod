@@ -1,5 +1,6 @@
 package com.mmc.balbes;
 
+import com.mmc.balbes.item.SuperItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -32,15 +33,10 @@ import org.slf4j.Logger;
 @Mod(SuperBalbesMod.MOD_ID)
 public class SuperBalbesMod
 {
-    // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "balbes";
-    // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
-    // Create a Deferred Register to hold Items which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
-    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
 
     // Creates a new Block with the id "examplemod:example_block", combining the namespace and path
@@ -63,6 +59,8 @@ public class SuperBalbesMod
     public SuperBalbesMod(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
+
+        SuperItems.register(modEventBus);
 
         // Register the commonSetup method for modLoading
         modEventBus.addListener(this::commonSetup);
@@ -102,6 +100,8 @@ public class SuperBalbesMod
     {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
             event.accept(EXAMPLE_BLOCK_ITEM);
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
+            event.accept(SuperItems.POZOR);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
