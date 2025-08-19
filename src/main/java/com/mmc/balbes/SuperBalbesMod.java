@@ -81,7 +81,7 @@ public class SuperBalbesMod
         modEventBus.addListener(this::addCreative);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        context.registerConfig(ModConfig.Type.COMMON, SuperConfig.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -89,12 +89,12 @@ public class SuperBalbesMod
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
 
-        if (Config.logDirtBlock)
+        if (SuperConfig.logDirtBlock)
             LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
 
-        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
+        LOGGER.info(SuperConfig.magicNumberIntroduction + SuperConfig.magicNumber);
 
-        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+        SuperConfig.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
     }
 
     // Add the example block item to the building blocks tab
